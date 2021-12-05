@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+    :root {
+        --color-text-primary: #fafafa;
+        --color-text-secondary: #666d95;
+        --color-text-accent: #ff8a15;
+        --color-bg-primary: #252a48;
+        --color-bg-secondary: #1b1f37;
+        --color-bg-accent: #16192d;
+        --color-border-primary: #313758;
+    }
+    .theme-light {
+        --color-text-primary: #0f0;
+        --color-text-secondary: #3b3;
+        --color-text-accent: #0ff;
+        --color-bg-primary: #000;
+        --color-bg-secondary: #333;
+        --color-bg-accent: #555;
+        --color-border-primary: #313758;
+    }
+}
+
+@layer utilities {
+    .w-side {
+        width: 90px;
+    }
+
+    .w-240 {
+        width: 240px;
+    }
+    .h-66 {
+        height: 66px;
+    }
+}
+
+@layer components {
+    .nav-link {
+        @apply h-24 text-skin-secondary text-xl flex 
+        justify-center items-center hover:bg-skin-secondary
+        hover:text-skin-accent
+    }
+
+    .market-nav-tab {
+        @apply flex-1 h-full flex items-center
+        
+    }
+
+} 
+
