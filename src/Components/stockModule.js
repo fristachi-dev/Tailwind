@@ -38,13 +38,13 @@ const StockModule = ({ data }) => {
   return (
     <div>
       <ul className="flex bg-skin-primary w-240 h-66">
-        <li className={`market-nav-tab hover:bg-skin-accent ${(show24h)?"bg-skin-accent":""}`} onClick={handleClick} data-nav="24h">
+        <li className={`market-nav-tab hover:bg-skin-accent ${(show24h)&&"bg-skin-accent"}`} onClick={handleClick} data-nav="24h">
           <p className="w-full text-skin-primary text-center" data-nav="24h">24h</p>
         </li>
-        <li className={`market-nav-tab hover:bg-skin-accent ${(showHistory)?"bg-skin-accent":""}`} onClick={handleClick} data-nav="history">
+        <li className={`market-nav-tab hover:bg-skin-accent ${(showHistory)&&"bg-skin-accent"}`} onClick={handleClick} data-nav="history">
           <p className="w-full text-skin-primary text-center" data-nav="history">History</p>
         </li>
-        <li className={`market-nav-tab hover:bg-skin-accent ${(showVolume)?"bg-skin-accent":""}`} onClick={handleClick} data-nav="volume">
+        <li className={`market-nav-tab hover:bg-skin-accent ${(showVolume)&&"bg-skin-accent"}`} onClick={handleClick} data-nav="volume">
           <p className="w-full text-skin-primary text-center" data-nav="volume">Volume</p>
         </li>
       </ul>

@@ -13,6 +13,8 @@ const Postfeed = () => {
     const [wnews, setWnews] = useState([""]);
     const [current, setCurrent] = useState([""]);
     const [stock, setStock] = useState([""]);
+    const [loaded, setLoaded] = useState(false)
+    
 
     useEffect(() => {
         
@@ -34,28 +36,30 @@ const Postfeed = () => {
 
             setNews(array)
             setCurrent(array)
-
+            console.log("LOADED")
+            setLoaded(true)
+            // console.log(news)
         });
 
         // ------------------WorldNews--------------------- \\
-        fetch("https://www.reddit.com/r/worldnews.json")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (response) {
-                //response.data.children[3].data.title
+        // fetch("https://www.reddit.com/r/worldnews.json")
+        //     .then(function (response) {
+        //         return response.json();
+        //     })
+        //     .then(function (response) {
+        //         //response.data.children[3].data.title
 
-                let array = [];
+        //         let array = [];
 
-                for (let i = 0; i < 10; i++) {
+        //         for (let i = 0; i < 10; i++) {
                     
-                    array[i] = response.data.children[i].data;
+        //             array[i] = response.data.children[i].data;
                     
-                }
+        //         }
 
-                setWnews(array)
+        //         setWnews(array)
 
-        });
+        // });
 
         // -----------------NewYorkTimes--------------------- \\
         // https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=6VcCkhBMY8mGPVczd3ZDkIXMctIeNo6G
@@ -81,8 +85,11 @@ const Postfeed = () => {
         // });
 
         // let temp = Data.quoteResponse.result[0]
+
+        //-------------------------------------------------\\
         setStock(Data.quoteResponse.result)
-        console.log("POSTFEED UEF")
+        
+        
 
 
     }, []);
@@ -101,8 +108,9 @@ const Postfeed = () => {
 
     return (  
         <div className={theme}>
-            <div className="flex w-screen bg-skin-primary">
-                
+            {(loaded) ? (
+                <div className="flex w-screen bg-skin-primary">
+
                 <Nav print={print}/>
 
                 <div className="flex-1">
@@ -112,6 +120,8 @@ const Postfeed = () => {
                         <Post
                             title={item.title}
                             key={i+100}
+                            createTime={item.created_utc}
+                            domain={item.domain}
                         />
                         ))}
                     </div>
@@ -120,6 +130,7 @@ const Postfeed = () => {
                 <StockModule data={stock}/>
 
             </div>
+            ) : <p>LOADING</p>}
         </div>
     );
 }
